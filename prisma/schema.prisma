@@ -1,29 +1,52 @@
 generator client {
-    provider        = "prisma-client-js"
-    previewFeatures = ["referentialIntegrity"]
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
 }
 
 datasource db {
-    provider             = "mysql"
-    url                  = env("DATABASE_URL")
-    referentialIntegrity = "prisma"
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
 }
 
-model Product {
-    id          Int       @id @default(autoincrement())
-    name        String
-    description String
-    price       Decimal
-    image       String
-    category    Category? @relation(fields: [category_id], references: [id])
-    category_id Int
-
-    @@index([category_id])
+model Student {
+  id    Int    @id @default(autoincrement())
+  name  String
+  dob   String
+  dname String
+  Minor String
 }
 
-model Category {
-    id          Int       @id @default(autoincrement())
-    name        String
-    description String
-    products    Product[]
+model Department {
+  id    Int     @id @default(autoincrement())
+  dname String?
+  class String
+}
+
+model Instructor {
+  id         Int    @id @default(autoincrement())
+  name       String
+  department String
+}
+
+model Schedule {
+  id   Int    @id @default(autoincrement())
+  room String
+  time String
+  day  String
+}
+
+model Class {
+  id                  Int        @id @default(autoincrement())
+  section             String
+  name                String
+  schedule            String
+  instructor          String
+  registered_students Registered @relation(fields: [studentID], references: [id])
+  studentID Int
+}
+
+model Registered {
+  id    Int     @id @default(autoincrement())
+  class Class[]
 }

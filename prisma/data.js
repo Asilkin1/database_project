@@ -1,52 +1,81 @@
 const { Prisma } = require('@prisma/client')
 
-const categories = [
+
+const departments = [
   {
-    name: 'Hats',
-    description: 'Things you can wear on your head',
+    dname:'CS',
+    class:'Database Managment 101'
   },
   {
-    name: 'Socks',
-    description: 'Things you can wear on your feet',
-  },
-  {
-    name: 'Shirts',
-    description: 'Things you wear on the top half of your body',
-  },
+    dname:'ME',
+    class:'Mechanical Engineering 101'
+  }
 ]
 
-const products = [
+const students = [
   {
-    name: 'Cool helmet.',
-    description: 'A nice helmet to wear on your head',
-    price: new Prisma.Decimal(19.95),
-    image: '/images/helmet.jpg',
-    category_id: 1,
+    name:'John Doe',
+    dob:'02/22/2022',
+    dname:'CS',
+    Minor:'Applied Math' 
   },
   {
-    name: 'Grey T-Shirt',
-    description: 'A nice shirt that you can wear on your body',
-    price: new Prisma.Decimal(22.95),
-    image: '/images/shirt.jpg',
-    category_id: 3,
-  },
-  {
-    name: 'Socks',
-    description: 'Cool socks that you can wear on your feet',
-    price: new Prisma.Decimal(12.95),
-    image: '/images/socks.jpg',
-    category_id: 2,
-  },
-  {
-    name: 'Sweatshirt',
-    description: 'Cool sweatshirt that you can wear on your body',
-    price: new Prisma.Decimal(12.95),
-    image: '/images/sweatshirt.jpg',
-    category_id: 3,
-  },
+    name:'Jane Doe',
+    dob:'02/23/2022',
+    dname:'ME',
+    Minor:'Applied Mechanical Engineering' 
+  }
 ]
+
+const schedules = [
+{
+  room: 'B2222',
+  time: '12:00 - 1:30 PM',
+  day:  'M,T,W'
+},
+{
+  room: 'B1111',
+  time: '9:00 - 10:30 AM',
+  day:  'M,T,W'
+}]
+
+const instructors = [
+  {
+    name: 'Mr Parkinson',
+    department: 'CS'
+  },
+  {
+    name: 'Mr Tuesday',
+    department: 'ME'
+  }]
+
+  const classes = [
+    {
+    section: '1',
+    name:'Super programming',
+    schedule: '1',
+    instructor: 'Mr Parkinson',
+    studentID:1
+    },
+    {
+      section: '2',
+      name:'Advanced Super Programming',
+      schedule: '2',
+      instructor: 'Mr Parkinson',
+      studentID:1
+    }]
+
+  const registered = [
+    {
+      id:100
+    }
+  ]
+
 
 module.exports = {
-  products,
-  categories,
-}
+ students,
+ departments,
+ schedules,
+ instructors,
+ classes,
+registered}
